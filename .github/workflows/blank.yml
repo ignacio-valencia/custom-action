@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # o el nombre de tu rama predeterminada
+  workflow_dispatch: 
 
 jobs:
   compare:
