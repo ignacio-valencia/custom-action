@@ -1,5 +1,6 @@
 const fs = require('fs');
 const deepDiff = require('deep-diff');
+const core = require('@actions/core');
 
 async function run() {
     const file1Path = process.env.INPUT_FILE1;
