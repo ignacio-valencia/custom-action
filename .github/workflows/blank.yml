@@ -1,24 +1,24 @@
-name: Comparar Archivos JSON
+name: Compare JSON Files
 
 on:
   push:
     branches:
-      - main # Cambia a la rama principal de tu repositorio
+      - main  # o el nombre de tu rama predeterminada
 
 jobs:
-  comparar-archivos:
+  compare:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del código
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Ejecutar el Action Personalizado
-        id: comparar-json
-        uses: ./ # Ruta al directorio donde se encuentra el Action Personalizado
-        with:
-          ARCHIVO1: example01.json
-          ARCHIVO2: example02.json
+    - name: Compare JSON files
+      id: compare-json
+      uses: ./  # Esto apunta a la raíz del repositorio donde reside tu action.yml
+      with:
+        file1: 'example01.json'
+        file2: 'example02.json'
 
-      - name: Imprimir JSON Resultante
-        run: echo "${{ steps.comparar-json.outputs.json_resultante }}"
+    - name: Show comparison result
+      run: echo "Comparison result: ${{ steps.compare-json.outputs.result }}"

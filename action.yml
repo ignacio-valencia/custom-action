@@ -1,14 +1,15 @@
-name: 'Comparar JSON Action'
-description: 'Compara dos archivos JSON'
-author: 'Tu Nombre'
+name: 'Compare JSON Files'
+description: 'Compares two JSON files in the repository'
 inputs:
-  archivo1:
-    description: 'Ruta al primer archivo JSON'
+  file1:
+    description: 'Path to the first JSON file'
     required: true
-  archivo2:
-    description: 'Ruta al segundo archivo JSON'
+  file2:
+    description: 'Path to the second JSON file'
     required: true
+outputs:
+  result:
+    description: 'Comparison result'
 runs:
-  using: 'docker'
-  image:
-    name: 'Dockerfile'
+  using: 'node16'
+  main: 'index.js'

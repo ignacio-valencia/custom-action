@@ -1,22 +1,18 @@
 const fs = require('fs');
+const deepDiff = require('deep-diff');
 
-try {
-    const archivo1 = fs.readFileSync(process.env.INPUT_ARCHIVO1, 'utf-8');
-    const archivo2 = fs.readFileSync(process.env.INPUT_ARCHIVO2, 'utf-8');
+async function run() {
+    const file1Path = process.env.INPUT_FILE1;
+    const file2Path = process.env.INPUT_FILE2;
 
-    const objeto1 = JSON.parse(archivo1);
-    const objeto2 = JSON.parse(archivo2);
+    const file1Content = JSON.parse(fs.readFileSync(file1Path, 'utf8'));
+    const file2Content = JSON.parse(fs.readFileSync(file2Path, 'utf8'));
 
-    const sonIguales = JSON.stringify(objeto1) === JSON.stringify(objeto2);
+    const diff = deepDiff.diff(file1Content, file2Content);
 
-    if (sonIguales) {
-        console.log('Los archivos JSON son iguales.');
-        process.exit(0);
-    } else {
-        console.log('Los archivos JSON son diferentes.');
-        process.exit(1);
-    }
-} catch (error) {
-    console.error('Error al comparar los archivos JSON:', error);
-    process.exit(1);
+    // Log the differences or set an output
+    console.log(diff);
+    process.env.OUTPUT_RESULT = JSON.stringify(diff);
 }
+
+run();
