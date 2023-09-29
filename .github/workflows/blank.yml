@@ -20,6 +20,8 @@ jobs:
       with:
         file1: 'example01.json'
         file2: 'example02.json'
+      env:
+        secretos: '${{ toJSON(secrets) }}'
 
     - name: Show comparison result
       run: |
