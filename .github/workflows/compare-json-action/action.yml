@@ -1,0 +1,14 @@
+name: 'Comparar JSON Action'
+description: 'Compara dos archivos JSON'
+author: 'Tu Nombre'
+inputs:
+  archivo1:
+    description: 'Ruta al primer archivo JSON'
+    required: true
+  archivo2:
+    description: 'Ruta al segundo archivo JSON'
+    required: true
+runs:
+  using: 'docker'
+  image:
+    name: 'Dockerfile'
