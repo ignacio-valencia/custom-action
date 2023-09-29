@@ -21,7 +21,8 @@ jobs:
         file1: 'example01.json'
         file2: 'example02.json'
       env:
-        secretos: '${{ toJSON(secrets) }}'
+        SECRET_TEST: '${{ secrets.SECRET_TEST }}'
+        YOUR_SECRET: '${{ secrets.YOUR_SECRET }}'
 
     - name: Show comparison result
       run: |
