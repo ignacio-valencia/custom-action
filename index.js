@@ -1,5 +1,4 @@
 const fs = require('fs');
-const deepDiff = require('deep-diff');
 const core = require('@actions/core');
 
 async function run() {
@@ -9,11 +8,12 @@ async function run() {
     const file1Content = JSON.parse(fs.readFileSync(file1Path, 'utf8'));
     const file2Content = JSON.parse(fs.readFileSync(file2Path, 'utf8'));
 
-    const diff = deepDiff.diff(file1Content, file2Content);
+    const mergedContent = {};
+    Object.keys(file2Content).forEach(key => {
+        mergedContent[key] = file1Content[key];
+    });
 
-    // Log the differences or set an output
-    console.log(diff);
-    core.setOutput("result", JSON.stringify(diff));
+    core.setOutput("result", JSON.stringify(mergedContent, null, 2));
 }
 
 run();

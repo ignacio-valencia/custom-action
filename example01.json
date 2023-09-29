@@ -1,5 +1,6 @@
 {
     "YOUR_SECRET": "123",
     "REPO_SECRET": "321",
+    "EXTRA": "EEE",
     "SECRET_TEST": "ABC"
 }
