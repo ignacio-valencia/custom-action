@@ -12,7 +12,7 @@ async function run() {
 
     // Log the differences or set an output
     console.log(diff);
-    process.env.OUTPUT_RESULT = JSON.stringify(diff);
+    core.setOutput("result", JSON.stringify(diff));
 }
 
 run();
