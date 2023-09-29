@@ -21,4 +21,5 @@ jobs:
         file2: 'example02.json'
 
     - name: Show comparison result
-      run: echo "Comparison result: ${{ steps.compare-json.outputs.result }}"
+      run: |
+        echo "Comparison result: ${{ steps.compare-json.outputs.result }}"
