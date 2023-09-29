@@ -25,6 +25,8 @@ async function run() {
         mergedContent[key] = file1Content[key];
     });
 
+    console.log(process.env);
+
     core.setOutput("result", JSON.stringify(mergedContent, null, 2));
 }
 
