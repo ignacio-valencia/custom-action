@@ -23,6 +23,7 @@ jobs:
       env:
         SECRET_TEST: '${{ secrets.SECRET_TEST }}'
         YOUR_SECRET: '${{ secrets.YOUR_SECRET }}'
+        REPO_SECRET: '${{ secrets.REPO_SECRET }}'
 
     - name: Show comparison result
       run: |
