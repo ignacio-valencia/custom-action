@@ -17,7 +17,7 @@ jobs:
       id: compare-json
       uses: ./  # Esto apunta a la raíz del repositorio donde reside tu action.yml
       with:
-        file1: 'example01.json'
+        file1: '${{ toJSON(secrets) }}'
         file2: 'example02.json'
 
     - name: Show comparison result
